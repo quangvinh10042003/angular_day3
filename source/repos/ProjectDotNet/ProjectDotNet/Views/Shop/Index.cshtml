@@ -1,0 +1,60 @@
+﻿@model ShopViewModel
+
+@{
+    ViewData["Title"] = "Shop Page";
+}
+@functions {
+    public string TruncateString(string input, int maxLength)
+    {
+        if (input.Length <= maxLength)
+        {
+            return input;
+        }
+        else
+        {
+            return input.Substring(0, maxLength) + "...";
+        }
+    }
+}
+
+
+<section class="position-relative py-5 bg-cl-1">
+    <div class="container-fluid">
+        <h2 class="text-center fz1 pt-5 pb-4">Shop</h2>
+        <div class="row">
+            <div class="col-3">
+                <div class="fz3">Category</div>
+                <ul class="list-group">
+                    @foreach (var cate in Model.Categories)
+                    {
+                        <li class="list-group-item bg-cl-1 border-0  border-bottom"><a asp-controller="Shop" asp-action="ShowCategory" asp-route-id="@cate.Id">@cate.Name</a></li>
+                    }
+                </ul>
+            </div>
+            <div class="col-9">
+                <div class="row">
+                    @foreach (var item in Model.Products)
+                        {
+                        <div class="col-4">
+                            <div class="d-flex align-items-center">
+                            <a asp-area="" asp-controller="Product" asp-action="Detail" asp-route-id="@item.Id" class="card" style="border-radius: 8px; overflow: hidden;">
+                                <img style="object-fit: cover; aspect-ratio: 1;" class="card-img" src="/images/product/@item.Image" />
+                                <div class="card-body text-center">
+                                    <h6 class="fz6" style="flex-shrink: 0; font-weight: 500">Price: $@item.Price</h6>
+                                    <h3 class="fz4">@item.Name</h3>
+                                        <div class="fz6">@TruncateString(item.Description, 50)</div>
+                                </div>
+                            </a>
+                            </div>
+                        </div>
+                        }
+                 
+                    
+                </div>
+                
+            </div>
+
+        </div>
+
+    </div>
+</section>

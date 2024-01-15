@@ -1,0 +1,37 @@
+﻿@model ProjectDotNet.Models.Accounts
+@{
+    ViewData["Title"] = "Register Page";
+}
+
+<section style="padding-bottom: 100px; padding-top: 100px" class="bg-color-1">
+    <div class="container-fluid">
+        <form asp-action="Create" style="width: 100%; margin: auto; max-width: 500px; background-color: #fff">
+            <h1 class="fz1 text-center">Register</h1>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name">Name</label>
+                <input type="text" asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email">Email</label>
+                <input asp-for="Email" type="text" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group pt-2">
+                <label asp-for="Password">Password</label>
+                <input type="password" asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="pt-3 pb-3">
+                <button type="submit" class="btn-color-1 d-block" style="width: 100%">
+                    Register
+                </button>
+            </div>
+            <div>
+                <a asp-controller="Account" asp-action="Login" class="btn-color-2">Login</a>
+            </div>
+        </form>
+     
+    </div>
+</section>

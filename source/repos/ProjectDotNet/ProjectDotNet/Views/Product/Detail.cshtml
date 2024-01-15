@@ -1,0 +1,102 @@
+﻿@model ProductViewModel
+
+@{
+    var product = Model.Product;
+    var recommendations = Model.Recommendations;
+    ViewData["Title"] = "Detail Page";
+}
+
+<section class="pt-0 pb-5 bg-cl-1">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-6">
+                <img class="card-img" src="/images/product/@product.Image" />
+            </div>
+            <div class="col-6 py-5 ps-5 pe-5" style="display: flex; flex-direction: column; justify-content: space-between">
+                <div>
+                    <h1 class="fz1">@product.Name</h1>
+                    <div class="fz5">Price: $@product.Price</div>
+                    <div class="pt-4">@product.Description</div>
+                    <form class="pt-4">
+                        <div>
+                            <label><b>Quantity</b></label>
+                            <br />
+                            <input class="mt-2" type="number" style="width: 200px; font-size: 20px;  padding: 3px 0 3px 20px; text-align: center" value="1" />
+                        </div>
+                        <button type="submit" class="btn-color-1 mt-3" style="width: 200px">
+                            Add to cart
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="row pt-5">
+                    <div class="col-4 text-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="84" height="84" viewBox="0 0 84 84" fill="none">
+                            <path d="M35.0693 24.0054C35.0693 30.659 41.9995 36.0527 41.9995 36.0527C41.9995 36.0527 48.9296 30.659 48.9296 24.0054C48.9296 17.3518 41.9995 11.9581 41.9995 11.9581C41.9995 11.9581 35.0693 17.3518 35.0693 24.0054Z" stroke="#693E30" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M45.7718 32.1867C41.0669 36.8916 42.1534 45.6059 42.1534 45.6059C42.1534 45.6059 50.8677 46.6923 55.5725 41.9875C60.2774 37.2826 59.1909 28.5684 59.1909 28.5684C59.1909 28.5684 50.4765 27.482 45.7718 32.1867Z" stroke="#693E30" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M38.2277 32.1867C42.9326 36.8916 41.8462 45.6059 41.8462 45.6059C41.8462 45.6059 33.1318 46.6923 28.4271 41.9875C23.7222 37.2826 24.8086 28.5684 24.8086 28.5684C24.8086 28.5684 33.523 27.482 38.2277 32.1867Z" stroke="#693E30" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M45.7718 47.9451C41.0669 52.6499 42.1534 61.3642 42.1534 61.3642C42.1534 61.3642 50.8677 62.4507 55.5725 57.7458C60.2774 53.0411 59.1909 44.3267 59.1909 44.3267C59.1909 44.3267 50.4765 43.2402 45.7718 47.9451Z" stroke="#693E30" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M38.2277 47.9451C42.9326 52.6499 41.8462 61.3642 41.8462 61.3642C41.8462 61.3642 33.1318 62.4507 28.4271 57.7458C23.7222 53.0411 24.8086 44.3267 24.8086 44.3267C24.8086 44.3267 33.523 43.2402 38.2277 47.9451Z" stroke="#693E30" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M42 36.0541V72.0425" stroke="#693E30" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M82 42C82 64.0915 64.0915 82 42 82C19.9085 82 2 64.0915 2 42C2 19.9085 19.9085 2 42 2C64.0915 2 82 19.9085 82 42Z" stroke="#693E30" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M28.5053 28.5039L13.7168 13.7154" stroke="#693E30" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M70.2835 70.2847L56.5723 56.5735" stroke="#693E30" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M42.0796 42.0781L41.9999 41.9985L41.9102 41.9087" stroke="#693E30" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <div class="fz5 pt-3" style="text-transform: uppercase; color: #693E30"><b>from nature</b></div>
+                    </div>
+                    <div class="col-4 text-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="78" height="84" viewBox="0 0 78 84" fill="none">
+                            <path d="M45.6473 60.7251L71.2329 60.6917C74.0644 60.6917 76.3599 58.3963 76.3599 55.5649V32.587C76.3599 29.7556 74.0644 27.4601 71.2329 27.4601H6.76764C3.93608 27.4601 1.64062 29.7556 1.64062 32.587V55.5649C1.64062 58.3963 3.93608 60.6917 6.76764 60.6917H32.4002" stroke="#693E30" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M50.6769 70.325C50.6769 76.7737 45.4493 82.0015 39.0005 82.0015C32.5518 82.0015 27.3242 76.7737 27.3242 70.325C27.3242 63.8763 32.5518 58.6486 39.0005 58.6486C45.4493 58.6486 50.6769 63.8763 50.6769 70.325Z" stroke="#693E30" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M42.0695 73.3921L35.9307 67.2531" stroke="#693E30" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M35.9307 73.3921L42.0695 67.2531" stroke="#693E30" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M52.7151 15.6565C48.1123 20.2593 39.2566 18.8665 39.2566 18.8665C39.2566 18.8665 37.8637 10.0108 42.4666 5.40792C47.0694 0.805063 55.9251 2.19794 55.9251 2.19794C55.9251 2.19794 57.318 11.0536 52.7151 15.6565Z" stroke="#693E30" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M25.2849 15.6565C29.8878 20.2593 38.7435 18.8665 38.7435 18.8665C38.7435 18.8665 40.1363 10.0108 35.5335 5.40792C30.9306 0.805063 22.075 2.19794 22.075 2.19794C22.075 2.19794 20.6821 11.0536 25.2849 15.6565Z" stroke="#693E30" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M39 27.4585V17.3084" stroke="#693E30" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M30.5273 51.5208L33.1805 36.8206C33.2469 36.4764 33.727 36.4442 33.8386 36.7766L38.1548 51.4063C38.2595 51.7178 38.701 51.7155 38.8024 51.403L42.9714 36.779C43.0795 36.4457 43.5598 36.4727 43.6297 36.8161L46.44 51.5208" stroke="#693E30" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M21.6103 37.8323C20.3644 36.9899 18.8944 36.5408 17.3904 36.5431C13.2219 36.5431 9.84277 39.9224 9.84277 44.0909C9.84277 48.2594 13.2219 51.6387 17.3904 51.6387C21.5589 51.6387 23.906 48.2594 23.906 44.0909H19.3902" stroke="#693E30" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M68.1569 44.0909C68.1569 48.2594 64.7778 51.6387 60.6091 51.6387C56.4406 51.6387 53.0615 48.2594 53.0615 44.0909C53.0615 39.9224 56.4406 36.5431 60.6091 36.5431C64.7778 36.5431 68.1569 39.9224 68.1569 44.0909Z" stroke="#693E30" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <div class="fz5 pt-3" style="text-transform: uppercase ;  color: #693E30"><b>NO add GMO</b></div>
+                    </div>
+                    <div class="col-4 text-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="84" height="84" viewBox="0 0 84 84" fill="none">
+                            <path d="M82 42C82 64.0915 64.0915 82 42 82C19.9085 82 2 64.0915 2 42C2 19.9085 19.9085 2 42 2C64.0915 2 82 19.9085 82 42Z" stroke="#693E30" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M33.2852 14.2666H50.8505" stroke="#693E30" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M64.246 56.8528V56.8531C64.246 63.1245 59.162 68.2085 52.8907 68.2085H31.244C24.9727 68.2085 19.8887 63.1245 19.8887 56.8531C19.8887 54.3293 20.7295 51.8774 22.2782 49.8847L33.9436 34.8757C35.3762 33.0325 36.1539 30.7645 36.1539 28.4301V14.2672H47.9823V28.4304C47.9823 30.7647 48.7599 33.0324 50.1922 34.8755L61.8566 49.8848C63.4053 51.8774 64.246 54.3292 64.246 56.8528Z" stroke="#693E30" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M22.2773 49.8848H61.8558" stroke="#693E30" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M44.2887 57.136C44.2887 58.3629 43.294 59.3574 42.0673 59.3574C40.8404 59.3574 39.8457 58.3629 39.8457 57.136C39.8457 55.9091 40.8404 54.9146 42.0673 54.9146C43.294 54.9146 44.2887 55.9091 44.2887 57.136Z" fill="#693E30" />
+                            <path d="M34.3297 60.4563C34.3297 61.6832 33.335 62.6777 32.1083 62.6777C30.8814 62.6777 29.8867 61.6832 29.8867 60.4563C29.8867 59.2294 30.8814 58.2349 32.1083 58.2349C33.335 58.2349 34.3297 59.2294 34.3297 60.4563Z" fill="#693E30" />
+                            <path d="M34.3342 34.335L13.7832 13.7839" stroke="#693E30" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M70.3503 70.3535L62.6523 62.6556" stroke="#693E30" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <div class="fz5 pt-3 " style="text-transform: uppercase;  color: #693E30"><b>NO Ancol</b></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5 bg-cl-2">
+    <div class="container-fluid">
+        <h2 class="fz2">Recommendations</h2>
+        <div class="row">
+            @foreach(var item in recommendations)
+            {
+                
+            <div class="col-3">
+                    <a asp-area="" asp-controller="Product" asp-action="Detail" asp-route-id="@item.Id" class="card" style="border-radius: 8px; overflow: hidden;">
+                        <img style="object-fit: cover; aspect-ratio: 1;" class="card-img" src="/images/product/@item.Image" />
+                        <div class="card-body text-center">
+                            <h6 class="fz6" style="flex-shrink: 0; font-weight: 500">Price: $@item.Price</h6>
+                            <h3 class="fz4">@item.Name</h3>
+                         
+                        </div>
+                    </a>
+            </div>
+            }
+        </div>
+    </div>
+</section>

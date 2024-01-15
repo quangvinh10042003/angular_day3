@@ -1,0 +1,167 @@
+﻿@model HomeViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+@functions {
+    public string TruncateString(string input, int maxLength)
+    {
+        if (input.Length <= maxLength)
+        {
+            return input;
+        }
+        else
+        {
+            return input.Substring(0, maxLength) + "...";
+        }
+    }
+}
+
+<section class="position-relative" style="width: 100%">
+    <img class="card-img" src="/images/Banner-v4-scaled.jpg" />
+    <h2 class="ps-5 position-absolute fz1" style="left: 0; top: 50%; transform: translateY(-50%); font-weight:900; max-width: 500px">Welcome to our shop</h2>
+</section>
+
+<section class="position-relative py-5 bg-cl-1">
+    <div class="container-fluid">
+        <h2 class="text-center fz2">Best seller</h2>
+        <div class="d-flex justify-content-center pt-2 pb-4">
+            <a class="btn btn-color-1" asp-controller="Shop" asp-action="Index">See our products</a>
+         </div>
+        <div class="row">
+            @foreach (var item in Model.Products)
+            {
+                <div class="col-2">
+                    <a href="#" asp-area="" asp-controller="Product" asp-action="Detail" asp-route-id="@item.Id" class="card" style="border-radius: 8px; overflow: hidden;">
+
+                        <img style="object-fit: cover; aspect-ratio: 1;" class="card-img" src="/images/product/@item.Image" />
+
+                        <div class="card-body">
+                            <h6 class="fz6" style="flex-shrink: 0; font-weight: 500">Price: $@item.Price</h6>
+                            <h3 class="fz5">@item.Name</h3>
+                        </div>
+                    </a>
+                </div>
+            }
+            
+            
+        </div>
+        
+    </div>
+</section>
+
+<section class="py-5">
+    <div style="max-width: 900px; margin: 0 auto; height: 100vh; display: flex; gap: 15px;">
+        <div class="col-lg-6 col-12" style="display: flex; flex-direction: column; gap: 15px;">
+            <img class="card-img rounded-3 shadow" style=" width: 100%; height: 300px; object-fit: cover" src="/images/ban2.jpg" />
+            <div class="d-flex align-items-center justify-content-center bg-cl-1 rounded-3 shadow" style="height: 600px">
+                <div>
+                    <h3 class="text-center fz3 pt-3">Join us</h3>
+                    <div class="text-center pt-2 pb-4">We'll be happy if you are a member of Vian. <br /> Create a account for take notice of all events</div>
+                    <div class="d-flex justify-content-center py-2"><a class="btn-color-1" asp-controller="Account" asp-action="Register">Register</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-12" style="display: flex; flex-direction: column; gap: 15px;">
+            <div class="d-flex align-items-center justify-content-center bg-cl-2 rounded-3 shadow" style="height: 600px">
+                <div>
+                    <h3 class="text-center fz3 pt-3">Sign in</h3>
+                    <div class="text-center pt-2 pb-4">Let's' go to explore our adventure. <br /> If you alread have an account. Login here!</div>
+                    <div class="d-flex justify-content-center py-2"><a class="btn-color-2" asp-controller="Account" asp-action="Login" >Login</a></div>
+                </div>
+            </div>
+            <img class="card-img rounded-3 shadow" style="width: 100%; height: 300px; object-fit: cover" src="/images/ban3.jpg" />
+        </div>
+    </div>
+</section>
+
+<section class="py-5 bg-cl-2">
+    <div class="container-fluid">
+        <div class="row py-4 align-items-center pe-3">
+            <div class="col-5">
+                <img class="card-img" src="/images/ban4.jpg" style="object-fit: cover" />
+            </div>
+            <div class="col-7 ps-2">
+                <div class="d-flex align-items-center justify-content-between">
+                    <h3 class="fz3">Channel</h3>
+                    <a asp-controller="Shop" asp-action="ShowCategory" asp-route-id="6" class="btn-color-1">See detail</a>
+                </div>
+                <div class="d-flex gap-2">
+                   
+                         @foreach (var item in Model.ChannelProducts)
+                         {
+                        <div class="col-3">
+                            <a asp-area="" asp-controller="Product" asp-action="Detail" asp-route-id="@item.Id" class="card" style="border-radius: 8px; overflow: hidden;">
+
+                                <img style="object-fit: cover; aspect-ratio: 1;" class="card-img" src="/images/product/@item.Image" />
+
+                                <div class="card-body text-center">
+                                    <h6 class="fz6" style="flex-shrink: 0; font-weight: 500">Price: @item.Price</h6>
+                                    <h3 class="fz5">@item.Name</h3>
+                                  
+                                </div>
+                            </a>
+                        </div>
+                        }
+                    
+                </div>
+            </div>
+        </div>
+        <div class="row py-4 align-items-center pe-3">
+            <div class="col-5">
+                <img class="card-img" src="/images/ban5.jpg" style="object-fit: cover" />
+            </div>
+            <div class="col-7 ps-2">
+                <div class="d-flex align-items-center justify-content-between">
+                    <h3 class="fz3">Gucci</h3>
+                    <a asp-controller="Shop" asp-action="ShowCategory" asp-route-id="3" class="btn-color-1">See detail</a>
+                </div>
+                <div class="d-flex gap-2">
+                    @foreach (var item in Model.GucciProducts)
+                    {
+                        <div class="col-3">
+                            <a asp-area="" asp-controller="Product" asp-action="Detail" asp-route-id="@item.Id" class="card" style="border-radius: 8px; overflow: hidden;">
+
+                                <img style="object-fit: cover; aspect-ratio: 1;" class="card-img" src="/images/product/@item.Image" />
+
+                                <div class="card-body text-center">
+                                    <h6 class="fz6" style="flex-shrink: 0; font-weight: 500">Price: @item.Price</h6>
+                                    <h3 class="fz5">@item.Name</h3>
+                                  
+                                </div>
+                            </a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="row py-4 align-items-center pe-3">
+            <div class="col-5">
+                <img class="card-img" src="/images/ban6.jpg" style="object-fit: cover" />
+            </div>
+            <div class="col-7 ps-2">
+                <div class="d-flex align-items-center justify-content-between">
+                    <h3 class="fz3">Dior</h3>
+                    <a asp-controller="Shop" asp-action="ShowCategory" asp-route-id="7" class="btn-color-1">See detail</a>
+                </div>
+                <div class="d-flex gap-2">
+                    @foreach (var item in Model.DiorProducts)
+                    {
+                        <div class="col-3">
+                            <a asp-area="" asp-controller="Product" asp-action="Detail" asp-route-id="@item.Id" class="card" style="border-radius: 8px; overflow: hidden;">
+
+                                <img style="object-fit: cover; aspect-ratio: 1;" class="card-img" src="/images/product/@item.Image" />
+
+                                <div class="card-body text-center">
+                                    <h6 class="fz6" style="flex-shrink: 0; font-weight: 500">Price: @item.Price</h6>
+                                    <h3 class="fz5">@item.Name</h3>
+                                  
+                                </div>
+                            </a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
